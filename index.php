@@ -29,8 +29,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
+                    <!--         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li> -->
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Home</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
@@ -45,10 +45,10 @@
             <div class="masthead-subheading">Welcome To Our Studio!</div>
             <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
             -->
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Productos Destacados</a>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#portfolio">Productos Destacados</a>
         </div>
     </header>
-    <!-- Services-->
+    <!-- Services , esto no haría falta lo dejo por las dudas
     <section class="page-section" id="services">
         <div class="container">
             <div class="text-center">
@@ -83,14 +83,60 @@
             </div>
         </div>
     </section>
+    -->
     <!-- Portfolio Grid-->
     <section class="page-section bg-light" id="portfolio">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Portfolio</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading text-uppercase">Home</h2>
+                <!--   <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
             </div>
             <div class="row">
+
+                <?php
+                // Aca se genero el Json con los productos
+                require "load-products.php";
+
+                // Libreria que sirve para acceder a los archivos Json
+                require "php-json-file-decode/json-file-decode.class.php";
+
+                $read = new json_file_decode();
+                $json = $read->json("listOfProducts.json");
+
+                $outstanding = array();
+
+                $limit = 0;
+                // Me guardo los productos destacados (isOutstanding) en un Array 
+                foreach ($json["products"] as $rkey => $j) :
+                    if ($j['isOutstanding'] == true && $limit < 10) {
+                        $outstanding[] = $j;
+                        $limit++;
+                    }
+                endforeach;
+                ?>
+
+                <?php
+                //En esta instancia ya tengo los 10 productos destacados en outstanding, solo hace falta recorrerlo
+                foreach ($outstanding as $product) :
+                ?>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="<?= $product["url"]; ?>" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"> <?= $product["name"]; ?> </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                endforeach;
+                ?>
+
+                <!-- Todo esto no va, no lo elimino porque capaz nos sirve para hacer la parte de lista de productos 
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="portfolio-item">
                         <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
@@ -175,6 +221,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </section>
