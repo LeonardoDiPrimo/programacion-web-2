@@ -3,7 +3,7 @@
      <div class="container">
          <div class="text-center">
              <h2 class="section-heading text-uppercase">Home</h2>
-             <!--   <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
+             <!--<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
          </div>
          <div class="row">
 
@@ -18,53 +18,23 @@
                 $json = $read->json("listOfProducts.json");
 
                 $limit = 0;
-                // Agarro los primeros 10 productos destacados y cargo el detalle del producto, lo cargo aca el detalle para generar los href
-                foreach ($json["products"] as $rkey => $j) :
-                    if ($j['isOutstanding'] == true && $limit < 10) { ?>
-                     <div class="portfolio-modal modal fade" id=<?= $j["id"] ?> tabindex="-1" role="dialog" aria-hidden="true">
-                         <div class="modal-dialog">
-                             <div class="modal-content">
-                                 <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                                 <div class="container">
-                                     <div class="row justify-content-center">
-                                         <div class="col-lg-8">
-                                             <div class="modal-body">
-                                                 <!-- Project Details Go Here-->
-                                                 <h2 class="text-uppercase"><?= $j["name"] ?></h2>
-                                                 <p class="item-intro text-muted"><?= $j["description"] ?></p>
-                                                 <img class="img-fluid d-block mx-auto" src="<?= $j["url"] ?>" alt="" />
-                                                 <!--  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consec!</p>-->
-                                                 <ul class="list-inline">
-                                                     <li>Marca: <?= strtoupper($j["brand"]) ?></li>
-                                                     <li>Modelo: <?= strtoupper($j["model"]) ?></li>
-                                                     <!--  <li>Category: Illustration</li> -->
-                                                 </ul>
-                                                 <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                                     <i class="fas fa-times mr-1"></i>
-                                                     Cerrar Producto
-                                                 </button>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-
+                // Agarro 10 productos y los muestro
+                foreach ($json["products"] as $rkey => $product) :
+                    if ($product['isOutstanding'] == true && $limit < 10) { ?>
                      <div class="col-lg-4 col-sm-6 mb-4">
                          <div class="portfolio-item">
-                             <a class="portfolio-link" data-toggle="modal" href="#<?= $j["id"] ?>">
+                             <a class="portfolio-link" data-toggle="modal">  <!--borro el href -->
                                  <div class="portfolio-hover">
                                      <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                  </div>
-                                 <img class="img-fluid" src="<?= $j["url"]; ?>" alt="" />
+                                 <a href="index.php?seccion=productDetail&productId=<?= $product["id"]; ?>">
+                                     <img class="img-fluid" src="<?= $product["url"]; ?>" alt="" /> </a>
                              </a>
                              <div class="portfolio-caption">
-                                 <div class="portfolio-caption-heading"> <?= $j["name"]; ?> </div>
+                                 <div class="portfolio-caption-heading"> <?= $product["name"]; ?> </div>
                              </div>
                          </div>
                      </div>
-
              <?php
                         $limit++;
                     }
