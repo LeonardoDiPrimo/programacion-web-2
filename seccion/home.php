@@ -9,10 +9,10 @@
 
              <?php
                 // Aca se genero el Json con los productos
-                require "load-products.php";
+                require_once("load-products.php");
 
                 // Libreria que sirve para acceder a los archivos Json
-                require "php-json-file-decode/json-file-decode.class.php";
+                require_once("php-json-file-decode/json-file-decode.class.php");
 
                 $read = new json_file_decode();
                 $json = $read->json("listOfProducts.json");
@@ -23,7 +23,8 @@
                     if ($product['isOutstanding'] == true && $limit < 10) { ?>
                      <div class="col-lg-4 col-sm-6 mb-4">
                          <div class="portfolio-item">
-                             <a class="portfolio-link" data-toggle="modal">  <!--borro el href -->
+                             <a class="portfolio-link" data-toggle="modal">
+                                 <!--borro el href -->
                                  <div class="portfolio-hover">
                                      <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                  </div>

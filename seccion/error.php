@@ -1,3 +1,4 @@
+<!-- SI modifican la ruta de la pagina web entra acá -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -6,4 +7,4 @@
     </div>
 </div>
 
-<?php require ("seccion/home.php"); ?>
+<?php require_once("seccion/home.php");?>
