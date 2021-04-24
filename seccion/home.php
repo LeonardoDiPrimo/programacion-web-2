@@ -26,7 +26,7 @@
                              <a class="portfolio-link" data-toggle="modal">
                                  <!--borro el href -->
                                  <div class="portfolio-hover">
-                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                     <div class="portfolio-hover-content"></div>
                                  </div>
                                  <a href="index.php?seccion=productDetail&productId=<?= $product["id"]; ?>">
                                      <img class="img-fluid" src="<?= $product["url"]; ?>" alt="" /> </a>
