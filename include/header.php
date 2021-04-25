@@ -31,6 +31,7 @@
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=services">Services</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=products">Productos</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=team">Team</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=contact">Contact</a></li>

@@ -9,6 +9,8 @@
             require("seccion/services.php");
         elseif ($form == "home") :
             require("seccion/home.php");
+        elseif ($form == "products") :
+            require("seccion/products.php");
         elseif ($form == "about") :
             require("seccion/about.php");
         elseif ($form == "team") :
