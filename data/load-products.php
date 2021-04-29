@@ -2,8 +2,9 @@
 
 //Genero un array en donde voy a guardar todos los productos
 $products_array = array("products" => array(
-    array(
-        "id" => "holas",
+    /* Inicializo el indice a mano asi no empieza con posicion 0 el array, como el primero ya es 1 los demas se incrementan normal */
+    1 => array(
+        "id" => 1,
         "name" => "Gabinete ASUS ROG STRIX Helios Aluminum Black RGB",
         "description" => "ROG Strix Helios White Edition es una caja de juegos con tres paneles de vidrio templado ahumado y una refinada construcción de aluminio cepillado - iluminación direccionable compatible y tecnología Aura Sync.",
         "brand" => "ASUS",
@@ -114,6 +115,6 @@ $products_array = array("products" => array(
 
 //Genera un archivo Json donde se guarda la info del array
 $products_json = json_encode($products_array);
-$handler = fopen("listOfProducts.json", "w+");
+$handler = fopen("data/loadProducts.json", "w+");
 fwrite($handler, $products_json);
 fclose($handler);

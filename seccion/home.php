@@ -9,13 +9,14 @@
 
              <?php
                 // Aca se genero el Json con los productos
-                require_once("load-products.php");
+                require_once("data/load-products.php");
+                require_once("data/comments.php");
 
                 // Libreria que sirve para acceder a los archivos Json
                 require_once("php-json-file-decode/json-file-decode.class.php");
 
                 $read = new json_file_decode();
-                $json = $read->json("listOfProducts.json");
+                $json = $read->json("data/loadProducts.json");
 
                 $limit = 0;
                 // Agarro 10 productos y los muestro

@@ -3,11 +3,11 @@
 require_once("php-json-file-decode/json-file-decode.class.php");
 
 $read = new json_file_decode();
-$json = $read->json("listOfProducts.json");
+$json = $read->json("data/loadProducts.json");
 
 //Voy a buscar el producto por el indice, si no lo encuentro no hago nada
 if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <= sizeof($json["products"])) {
-    $product = $json["products"][$_GET["productId"] - 1];
+    $product = $json["products"][$_GET["productId"]];
 ?>
     <div class="container">
         <div class="row justify-content-center">
@@ -45,6 +45,33 @@ if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <
                             <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Enviar Comentario</button>
                         </div>
                     </form>
+                    <br>
+                    <h3>Comentarios</h3>
+                    <table cellspacing="20" cellpadding="20" border="1">
+                        <tr>
+                            <th scope="col">Email</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Calificación</th>
+                        </tr>
+                        <?php
+                        $read = new json_file_decode();
+                        $json = $read->json("data/comments.json");
+
+                        $limit = 0;
+
+                        foreach ($json["comments"] as $rkey => $comment) :
+                            if ($comment['productId'] == $product["id"] && $limit < 10) { ?>
+                                <tr>
+                                    <td><?= $comment['email']; ?></td>
+                                    <td><?= $comment['description']; ?></td>
+                                    <td><?= $comment['qualification']; ?></td>
+                                </tr>
+                        <?php
+                                $limit++;
+                            }
+                        endforeach;
+                        ?>
+                    </table>
                 </div>
             </div>
         </div>
