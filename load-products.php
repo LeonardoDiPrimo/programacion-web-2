@@ -3,7 +3,7 @@
 //Genero un array en donde voy a guardar todos los productos
 $products_array = array("products" => array(
     array(
-        "id" => 1,
+        "id" => "holas",
         "name" => "Gabinete ASUS ROG STRIX Helios Aluminum Black RGB",
         "description" => "ROG Strix Helios White Edition es una caja de juegos con tres paneles de vidrio templado ahumado y una refinada construcción de aluminio cepillado - iluminación direccionable compatible y tecnología Aura Sync.",
         "brand" => "ASUS",
