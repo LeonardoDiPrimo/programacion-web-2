@@ -1,6 +1,8 @@
  <?php
     // El index carga la barra de navegacion
     require_once("include/header.php");
+    require_once("data/categorias.php");
+    require_once("data/marcas.php");
 
     //  Navega entre las distintas secciones de la pagina
     if (!empty($_GET["seccion"])) {
@@ -10,7 +12,7 @@
         elseif ($form == "home") :
             require("seccion/home.php");
         elseif ($form == "products") :
-            require("seccion/products.php");
+            require("seccion/filter_products.php");
         elseif ($form == "about") :
             require("seccion/about.php");
         elseif ($form == "team") :
