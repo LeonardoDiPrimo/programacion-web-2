@@ -20,7 +20,7 @@ if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <
                     <!--  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consec!</p>-->
                     <ul class="list-inline">
                         <br>
-                        <li>Marca: <?= strtoupper($product["brand"]) ?></li>
+                        <li>Marca: <?= strtoupper($marcas[$product["brandId"]]["nombre"]) ?></li>
                         <li>Modelo: <?= strtoupper($product["model"]) ?></li>
                         <!--  <li>Category: Illustration</li> -->
                     </ul>

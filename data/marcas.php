@@ -23,12 +23,12 @@ $marcas = array(
         'id_marcas' => '5',
         'nombre' => 'LOGITECH',
 ),
-    '5' => array(
-        'id_marcas' => '5',
-	    'nombre' => 'ZOTAC',
-),
     '6' => array(
         'id_marcas' => '6',
+	    'nombre' => 'ZOTAC',
+),
+    '7' => array(
+        'id_marcas' => '7',
 	    'nombre' => 'OLOy',
 )
 );
