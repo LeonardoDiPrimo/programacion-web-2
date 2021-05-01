@@ -1,6 +1,10 @@
  <?php
     // El index carga la barra de navegacion
     require_once("include/header.php");
+
+    //Cargamos todos los php necesarios para generar los Json y que la pagina funcione
+    require_once("data/load-products.php");
+    require_once("data/comments.php");
     require_once("data/categorias.php");
     require_once("data/marcas.php");
 
