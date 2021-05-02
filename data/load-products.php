@@ -11,6 +11,7 @@ $products_array = array("products" => array(
         "categoryId" => 3,
         "model" => "Helios Aluminum Black RGB",
         "isOutstanding" => true,
+        "price" => 3000,
         "url" => "assets/img/portfolio/gabinete-asus-1.jpg"
     ),
     array(
@@ -21,6 +22,7 @@ $products_array = array("products" => array(
         "categoryId" => 3,
         "model" => "GT501 Vidrio Templado",
         "isOutstanding" => true,
+        "price" => 3500,
         "url" => "assets/img/portfolio/gabinete-asus-2.jpg"
     ),
     array(
@@ -31,6 +33,7 @@ $products_array = array("products" => array(
         "categoryId" => 3,
         "model" => "DarkBlader-G",
         "isOutstanding" => true,
+        "price" => 5000,
         "url" => "assets/img/portfolio/gabinete-cougar-1.jpg"
     ),
     array(
@@ -41,6 +44,7 @@ $products_array = array("products" => array(
         "categoryId" => 1,
         "model" => "GeForce RTX 3060 Ti 8GB GDDR6",
         "isOutstanding" => true,
+        "price" => 100000,
         "url" => "assets/img/portfolio/placa-de-video-zotac.jpg"
     ),
     array(
@@ -51,6 +55,7 @@ $products_array = array("products" => array(
         "categoryId" => 1,
         "model" => "GeForce RTX 3060 12GB GDDR6",
         "isOutstanding" => true,
+        "price" => 12000,
         "url" => "assets/img/portfolio/placa-de-video-msi.jpg"
     ),
     array(
@@ -61,6 +66,7 @@ $products_array = array("products" => array(
         "categoryId" => 1,
         "model" => "RX 6800 XT 16GB GDDR6",
         "isOutstanding" => true,
+        "price" => 200000,
         "url" => "assets/img/portfolio/placa-de-video-asus.jpg"
     ),
     array(
@@ -71,6 +77,7 @@ $products_array = array("products" => array(
         "categoryId" => 2,
         "model" => "X570-E Gaming AM4",
         "isOutstanding" => true,
+        "price" => 7000,
         "url" => "assets/img/portfolio/mother-asus.jpg"
     ),
     array(
@@ -81,6 +88,7 @@ $products_array = array("products" => array(
         "categoryId" => 2,
         "model" => "Z490 Aorus Xtreme",
         "isOutstanding" => true,
+        "price" => 8000,
         "url" => "assets/img/portfolio/mother-gigabyte-z490.jpg"
     ),
     array(
@@ -91,6 +99,7 @@ $products_array = array("products" => array(
         "categoryId" => 2,
         "model" => " B460 AORUS PRO",
         "isOutstanding" => true,
+        "price" => 9000,
         "url" => "assets/img/portfolio/mother-gigabyte-b460.jpg"
     ),
     array(
@@ -101,6 +110,7 @@ $products_array = array("products" => array(
         "categoryId" => 5,
         "model" => "DDR4 64GB (2x32GB) Warhawk Black RGB 3600MHz",
         "isOutstanding" => true,
+        "price" => 20000,
         "url" => "assets/img/portfolio/memoria-ram.jpg"
     ),
     array(
@@ -111,6 +121,7 @@ $products_array = array("products" => array(
         "categoryId" => 4,
         "model" => "CHAKRAM RF Inalambrico",
         "isOutstanding" => true,
+        "price" => 15000,
         "url" => "assets/img/portfolio/mouse-asus.jpg"
     ),
     array(
@@ -121,6 +132,7 @@ $products_array = array("products" => array(
         "categoryId" => 4,
         "model" => "Logitech G502",
         "isOutstanding" => true,
+        "price" => 16000,
         "url" => "assets/img/portfolio/mouse-logitech.jpg"
     ),
 ));
