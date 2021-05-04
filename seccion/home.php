@@ -26,7 +26,8 @@
                                      <div class="portfolio-hover-content"></div>
                                  </div>
                                  <a href="index.php?seccion=productDetail&productId=<?= $product["id"]; ?>">
-                                     <img class="img-fluid" src="<?= $product["url"]; ?>" alt="" /> </a>
+                                     <div class="home-gallery"><img class="img-fluid" src="<?= $product["url"]; ?>" alt="" /></div>
+                                 </a>
                              </a>
                              <div class="portfolio-caption">
                                  <div class="portfolio-caption-heading"> <?= $product["name"]; ?> </div>
