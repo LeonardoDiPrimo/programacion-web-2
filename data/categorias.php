@@ -2,25 +2,25 @@
 $categorias = array(
 	
 	'1' => array (
-		'id_categoria' => '1',
+		'id_categoria' => 1,
 		'nombre' => 'Placas de Video',
 ),
 
     '2' => array (
-	    'id_categoria' => '2',
+	    'id_categoria' => 2,
 	    'nombre' => 'Motherboards',
 ),
 
     '3' => array (
-	    'id_categoria' => '3',
+	    'id_categoria' => 3,
 	    'nombre' => 'Gabinetes',
 ),
     '4' => array(
-        'id_categoria' => '4',
+        'id_categoria' => 4,
 	    'nombre' => 'Perifericos',
     ),
     '5' => array(
-        'id_categoria' => '5',
+        'id_categoria' => 5,
 	    'nombre' => 'Memorias RAM',
 	)
 
