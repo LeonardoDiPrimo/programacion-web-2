@@ -1,19 +1,44 @@
 <!-- Listado del hardware con precio y boton descripcion -->
 
 <?php
-
 $products = $products_array["products"];
 
-if (array_key_exists('categoryId', $_GET)) {
-	$products = array_filter($products, function ($product) {
-		return ($product['categoryId'] == $_GET["categoryId"]);
-	});
-}
+if (array_key_exists('applyFilters', $_POST)) {
+	$filter_products = [];
 
-if (array_key_exists('brandId', $_GET)) {
-	$products = array_filter($products, function ($product) {
-		return ($product['brandId'] == $_GET["brandId"]);
-	});
+	//Solo aplica filtros sobre Categoria
+	if (array_key_exists('categorys', $_POST) && !array_key_exists('brands', $_POST)) {
+		foreach ($_POST['categorys'] as $category) {
+			foreach ($products as $product) {
+				if ($product["categoryId"] == $category) array_push($filter_products, $product);
+			}
+		};
+	}
+	//Solo aplica filtros sobre la Marca
+	else if (!array_key_exists('categorys', $_POST) && array_key_exists('brands', $_POST)) {
+		foreach ($_POST['brands'] as $brand) {
+			foreach ($products as $product) {
+				if ($product["brandId"] == $brand) array_push($filter_products, $product);
+			};
+		};
+	}
+	//Aplica filtros sobre Categoria y Marca
+	elseif (array_key_exists('categorys', $_POST) && array_key_exists('brands', $_POST)) {
+		foreach ($_POST['categorys'] as $category) {
+			foreach ($products as $product) {
+				if ($product["categoryId"] == $category) {
+					foreach ($_POST['brands'] as $brand) {
+						if ($product["brandId"] == $brand) array_push($filter_products, $product);
+					}
+				}
+			}
+		}
+	}
+	// Si no aplico ningun filtro entonces muestro todo
+	else $filter_products = $products;
+
+	//Si tengo productos en ($filter_products) se lo seteo a $products que es el que popula los productos
+	!empty($filter_products) ? $products = $filter_products : $products = [];
 }
 ?>
 
@@ -28,7 +53,7 @@ if (array_key_exists('brandId', $_GET)) {
 <div class="container">
 	<div class="row">
 		<div class="col-md-3 ">
-			<div class="card mt-5">
+			<form action="index.php?seccion=products" method="post">
 				<div id="accordion-side-bar">
 					<div class="card">
 						<div class="card-header bg-dark" id="header-categorias" data-toggle="collapse" type="button" data-target="#collapse-categorias" aria-controls="collapse-categorias">
@@ -38,13 +63,14 @@ if (array_key_exists('brandId', $_GET)) {
 							<div class="card-body">
 								<?php
 								foreach ($categorias as $category) { ?>
-									<a href="index.php?seccion=products&categoryId=<?= $category["id_categoria"]; ?>"><button type="button" class="list-group-item list-group-item-action"><?= $category["nombre"] ?></button></a>
+									<input type="checkbox" name="categorys[]" value=<?= $category["id_categoria"] ?>> <?= $category["nombre"] ?><br>
 								<?php
 								}
 								?>
 							</div>
 						</div>
 					</div>
+					<br>
 					<div class="card">
 						<div class="card-header bg-dark" id="header-marcas" data-toggle="collapse" type="button" data-target="#collapse-marcas" aria-controls="collapse-marcas">
 							<h6 class="mb-0 text-light">Marcas</h6>
@@ -53,39 +79,42 @@ if (array_key_exists('brandId', $_GET)) {
 							<div class="card-body">
 								<?php
 								foreach ($marcas as $brand) { ?>
-									<a href="index.php?seccion=products&brandId=<?= $brand["id_marcas"]; ?>"><button type="button" class="list-group-item list-group-item-action"><?= $brand["nombre"] ?></button></a>
+									<input type="checkbox" name="brands[]" value=<?= $brand["id_marcas"] ?>> <?= $brand["nombre"] ?><br>
 								<?php
 								}
 								?>
 							</div>
 						</div>
 					</div>
+					<br>
 				</div>
-			</div>
+				<input class="btn btn-primary btn-x5 text-uppercase" value="Aplicar filtros" type="submit" name="applyFilters" id="applyFilters">
+			</form>
 		</div>
 		<div class="col-md-9 my-3">
 			<div class="container mb-4  py-4">
 				<div class="row">
 					<?php
-					foreach ($products as $rkey => $product) {  ?>
-						<div class="col-md-3" style="float:left">
-							<div class="card mb-2">
-								<img class="card-img-top" src=<?= $product["url"]; ?> alt="Card image cap">
-								<div class="card-body">
-									<p class="card-text">Nombre</p>
-									<p class="card-text text-info">$ <?= $product["price"]; ?></p>
-									<p class="card-text">Descripcion</p>
-									<div class="d-flex justify-content-between align-items-center">
-										<div class="btn-group">
-											<a href="index.php?seccion=productDetail&productId=<?= $product["id"]; ?>">
-												<button type="button" class="btn btn-dark"> Detalles</button></a>
+					if (!empty($products)) {
+						foreach ($products as $rkey => $product) {  ?>
+							<div class="col-md-3" style="float:left">
+								<div class="card mb-2">
+									<img class="card-img-top" src=<?= $product["url"]; ?> alt="Card image cap">
+									<div class="card-body">
+										<p class="card-text">Nombre</p>
+										<p class="card-text text-info">$ <?= $product["price"]; ?></p>
+										<div class="d-flex justify-content-between align-items-center">
+											<div class="btn-group">
+												<a href="index.php?seccion=productDetail&productId=<?= $product["id"]; ?>">
+													<button type="button" class="btn btn-dark"> Detalles</button></a>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 					<?php
-					}
+						}
+					} else echo "No hay productos que complan los filtros seleccionados";
 					?>
 				</div>
 			</div>
