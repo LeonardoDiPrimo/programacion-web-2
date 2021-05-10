@@ -1,6 +1,6 @@
 <?php
 
-require_once("php-json-file-decode/json-file-decode.class.php");
+require_once("../php-json-file-decode/json-file-decode.class.php");
 
 $read = new json_file_decode();
 $json = $read->json("../data/loadProducts.json");

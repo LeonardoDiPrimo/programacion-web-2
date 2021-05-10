@@ -11,8 +11,7 @@
 </head>
 
 <?php
-require_once("../data/user.php");
-require_once("../../php-json-file-decode/json-file-decode.class.php");
+require_once("../php-json-file-decode/json-file-decode.class.php");
 $read = new json_file_decode();
 $user = $read->json("../data/user.json");
 ?>
@@ -39,7 +38,7 @@ $user = $read->json("../data/user.json");
 
 								<div class="form-group">
 									<label for="password">Contraseña
-										<a href="forgot.php" class="float-right">
+										<a href="seccion/forgot.php" class="float-right">
 											¿Olvidó su contraseña?
 										</a>
 									</label>
@@ -60,7 +59,7 @@ $user = $read->json("../data/user.json");
 									<input type="submit" name="loginButton" id="loginButton" value="Ingresar" class="btn btn-primary btn-block"></input>
 								</div>
 								<div class="mt-4 text-center">
-									¿No tenes una cuenta? <a href="register.php">Crear cuenta</a>
+									¿No tenes una cuenta? <a href="seccion/register.php">Crear cuenta</a>
 								</div>
 							</form>
 						</div>
@@ -77,7 +76,7 @@ $user = $read->json("../data/user.json");
 
 	if (array_key_exists('loginButton', $_POST)) {
 		if ($user[1]["email"] == $_POST["email"] && $user[1]["password"] == $_POST["password"]) { ?>
-			<meta http-equiv="refresh" content="0;url=tables.php">
+			<meta http-equiv="refresh" content="0;url=seccion/tables.php">
 		<?php
 		} else {
 		?>
