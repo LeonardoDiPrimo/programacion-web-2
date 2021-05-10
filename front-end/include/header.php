@@ -14,7 +14,6 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=about">About</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=team">Team</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?seccion=contact">Contacto</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="admin/seccion/login.php">login</a></li>
             </ul>
         </div>
     </div>
