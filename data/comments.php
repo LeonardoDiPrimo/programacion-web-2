@@ -26,7 +26,7 @@ $comments_array = array("comments" => array(
 
 //Genera un archivo Json donde se guarda la info del array
 $comments_json = json_encode($comments_array);
-$handler = fopen("data/comments.json", "w+");
+$handler = fopen("../data/comments.json", "w+");
 fwrite($handler, $comments_json);
 fclose($handler);
 

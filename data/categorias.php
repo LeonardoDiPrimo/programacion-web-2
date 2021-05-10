@@ -26,7 +26,7 @@ $categorias = array(
 
 );
 $categorias_json = json_encode($categorias);
-$handler = fopen("data/categorias.json", "w+");
+$handler = fopen("../data/categorias.json", "w+");
 fwrite($handler, $categorias_json);
 fclose($handler);
 ?>

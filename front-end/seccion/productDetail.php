@@ -3,7 +3,7 @@
 require_once("php-json-file-decode/json-file-decode.class.php");
 
 $read = new json_file_decode();
-$json = $read->json("data/loadProducts.json");
+$json = $read->json("../data/loadProducts.json");
 
 //Voy a buscar el producto por el indice, si no lo encuentro no hago nada
 if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <= sizeof($json["products"])) {
@@ -55,7 +55,7 @@ if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <
                         </tr>
                         <?php
                         $read = new json_file_decode();
-                        $json = $read->json("data/comments.json");
+                        $json = $read->json("../data/comments.json");
 
                         $limit = 0;
 
