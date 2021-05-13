@@ -28,6 +28,7 @@
     require_once("../data/comments.php");
     require_once("../data/categorias.php");
     require_once("../data/marcas.php");
+    require_once("helpers/string.php");
 
     //  Navega entre las distintas secciones de la pagina
     if (!empty($_GET["seccion"])) {

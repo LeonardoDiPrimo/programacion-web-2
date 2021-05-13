@@ -11,9 +11,7 @@
 </head>
 
 <?php
-require_once("../php-json-file-decode/json-file-decode.class.php");
-$read = new json_file_decode();
-$user = $read->json("../data/user.json");
+$array_users = json_decode(file_get_contents("../data/user.json"), true);
 ?>
 
 <body class="my-login-page">
@@ -75,12 +73,13 @@ $user = $read->json("../data/user.json");
 	<?php
 
 	if (array_key_exists('loginButton', $_POST)) {
-		if ($user[1]["email"] == $_POST["email"] && $user[1]["password"] == $_POST["password"]) { ?>
+		$user_filter = array_filter($array_users["users"], function ($user) {
+			return ($user['email'] == $_POST["email"] && $user['password'] == $_POST["password"]);
+		});
+		if (!empty($user_filter)) { ?>
 			<meta http-equiv="refresh" content="0;url=seccion/tables.php">
 		<?php
-		} else {
-		?>
-			<script>
+		} else { ?> <script>
 				alert('El usuario o contraseña es incorrecto');
 			</script>
 	<?php

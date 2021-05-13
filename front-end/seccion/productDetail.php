@@ -1,27 +1,30 @@
 <?php
 
-require_once("../php-json-file-decode/json-file-decode.class.php");
+$products = json_decode(file_get_contents("../data/loadProducts.json"), true);
 
-$read = new json_file_decode();
-$json = $read->json("../data/loadProducts.json");
+//Voy a buscar el producto por el id, si no lo encuentro redirecciono al home
+if (array_key_exists('productId', $_GET)) {
+    $productFilter = array_filter($products["products"], function ($product) {
+        return ($product['id'] == $_GET["productId"]);
+    });
+}
 
-//Voy a buscar el producto por el indice, si no lo encuentro no hago nada
-if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <= sizeof($json["products"])) {
-    $product = $json["products"][$_GET["productId"]];
+if (!empty($productFilter)) {
+    $product = $productFilter[$_GET["productId"]];
 ?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="modal-body">
                     <!-- Project Details Go Here-->
-                    <h2 class="text-uppercase"><?= $product["name"] ?></h2>
-                    <p class="item-intro text-muted"><?= $product["description"] ?></p>
-                    <img class="img-fluid d-block mx-auto" src="<?= $product["url"] ?>" alt="" />
+                    <h2 class="text-uppercase"><?php echo $product["name"] ?></h2>
+                    <p class="item-intro text-muted"><?php echo $product["description"] ?></p>
+                    <img class="img-fluid d-block mx-auto" src="<?php echo $product["url"] ?>" alt="" />
                     <!--  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consec!</p>-->
                     <ul class="list-inline">
                         <br>
-                        <li>Marca: <?= strtoupper($marcas[$product["brandId"]]["nombre"]) ?></li>
-                        <li>Modelo: <?= strtoupper($product["model"]) ?></li>
+                        <li>Marca: <?php echo strtoupper($marcas[$product["brandId"]]["nombre"]) ?></li>
+                        <li>Modelo: <?php echo strtoupper($product["model"]) ?></li>
                         <!--  <li>Category: Illustration</li> -->
                     </ul>
                     <form id="commentForm">
@@ -54,22 +57,20 @@ if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <
                             <th scope="col">Calificación</th>
                         </tr>
                         <?php
-                        $read = new json_file_decode();
-                        $json = $read->json("../data/comments.json");
-
+                        $array_comments = json_decode(file_get_contents("../data/comments.json"), true);
                         $limit = 0;
 
-                        foreach ($json["comments"] as $rkey => $comment) :
+                        foreach ($array_comments["comments"] as $rkey => $comment) {
                             if ($comment['productId'] == $product["id"] && $limit < 10) { ?>
                                 <tr>
-                                    <td><?= $comment['email']; ?></td>
-                                    <td><?= $comment['description']; ?></td>
-                                    <td><?= $comment['qualification']; ?></td>
+                                    <td><?php echo $comment["email"] ?></td>
+                                    <td><?php echo $comment["description"] ?></td>
+                                    <td><?php echo $comment["qualification"] ?></td>
                                 </tr>
                         <?php
                                 $limit++;
                             }
-                        endforeach;
+                        }
                         ?>
                     </table>
                 </div>
@@ -77,4 +78,4 @@ if ($_GET["productId"] != null && $_GET["productId"] > 0 && $_GET["productId"] <
         </div>
     </div>
 <?php
-} else  require_once("seccion/home.php"); // Si el id del producto es invalido lo mando al home
+} else require_once("seccion/home.php");

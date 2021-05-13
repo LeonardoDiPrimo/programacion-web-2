@@ -63,7 +63,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 							<div class="card-body">
 								<?php
 								foreach ($categorias as $category) { ?>
-									<input type="checkbox" name="categorys[]" value=<?= $category["id_categoria"] ?>> <?= $category["nombre"] ?><br>
+									<input type="checkbox" name="categorys[]" value=<?php echo $category["id_categoria"] ?>> <?php echo $category["nombre"] ?><br>
 								<?php
 								}
 								?>
@@ -79,7 +79,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 							<div class="card-body">
 								<?php
 								foreach ($marcas as $brand) { ?>
-									<input type="checkbox" name="brands[]" value=<?= $brand["id_marcas"] ?>> <?= $brand["nombre"] ?><br>
+									<input type="checkbox" name="brands[]" value=<?php echo $brand["id_marcas"] ?>> <?php echo $brand["nombre"] ?><br>
 								<?php
 								}
 								?>
@@ -99,13 +99,14 @@ if (array_key_exists('applyFilters', $_POST)) {
 						foreach ($products as $rkey => $product) {  ?>
 							<div class="col-md-3" style="float:left">
 								<div class="card mb-2">
-									<img class="card-img-top" src=<?= $product["url"]; ?> alt="Card image cap">
+									<img class="card-img-top" src=<?php echo $product["url"] ?> alt="Card image cap">
 									<div class="card-body">
-										<p class="card-text">Nombre</p>
-										<p class="card-text text-info">$ <?= $product["price"]; ?></p>
+										<h6 class="card-title"><?php echo $product["name"] ?></h6>
+										<p class="card-text text-info">$ <?php echo $product["price"] ?></p>
+										<p class="card-text"><?php echo cortar_palabras($product["description"], 70) ?></p>
 										<div class="d-flex justify-content-between align-items-center">
 											<div class="btn-group">
-												<a href="index.php?seccion=productDetail&productId=<?= $product["id"]; ?>">
+												<a href="index.php?seccion=productDetail&productId=<?php echo $product["id"] ?>">
 													<button type="button" class="btn btn-dark"> Detalles</button></a>
 											</div>
 										</div>
