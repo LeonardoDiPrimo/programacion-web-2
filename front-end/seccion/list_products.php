@@ -53,7 +53,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 <div class="container">
 	<div class="row">
 		<div class="col-md-3 ">
-			<form action="index.php?seccion=products" method="post">
+			<form name="listProductsForm"  method="POST">
 				<div id="accordion-side-bar">
 					<div class="card">
 						<div class="card-header bg-dark" id="header-categorias" data-toggle="collapse" type="button" data-target="#collapse-categorias" aria-controls="collapse-categorias">
@@ -88,7 +88,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 					</div>
 					<br>
 				</div>
-				<input class="btn btn-primary btn-x5 text-uppercase" value="Aplicar filtros" type="submit" name="applyFilters" id="applyFilters">
+				<input class="btn btn-primary btn-x5 text-uppercase" value="Aplicar filtros" type="submit" name="applyFilters">
 			</form>
 		</div>
 		<div class="col-md-9 my-3">
@@ -96,7 +96,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 				<div class="row">
 					<?php
 					if (!empty($products)) {
-						foreach ($products as $rkey => $product) {  ?>
+						foreach ($products as $product) {  ?>
 							<div class="col-md-3" style="float:left">
 								<div class="card mb-2">
 									<img class="card-img-top" src=<?php echo $product["url"] ?> alt="Card image cap">
