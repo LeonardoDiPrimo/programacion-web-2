@@ -1,7 +1,12 @@
 <!-- Listado del hardware con precio y boton descripcion -->
 
 <?php
-$products = $products_array["products"];
+
+require_once("business/productsBusiness.php");
+require_once("business/categoriesBusiness.php");
+require_once("business/brandsBusiness.php");
+
+$products = daoGetProducts();
 
 if (array_key_exists('applyFilters', $_POST)) {
 	$filter_products = [];
@@ -62,7 +67,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 						<div id="collapse-categorias" class="collapse show" data-parent="#accordion-side-bar">
 							<div class="card-body">
 								<?php
-								foreach ($categorias as $category) { ?>
+								foreach (daoGetCategories() as $category) { ?>
 									<input type="checkbox" name="categorys[]" value=<?php echo $category["id_categoria"] ?>> <?php echo $category["nombre"] ?><br>
 								<?php
 								}
@@ -78,7 +83,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 						<div id="collapse-marcas" class="collapse show" data-parent="#accordion-side-bar">
 							<div class="card-body">
 								<?php
-								foreach ($marcas as $brand) { ?>
+								foreach (daoGetBrands() as $brand) { ?>
 									<input type="checkbox" name="brands[]" value=<?php echo $brand["id_marcas"] ?>> <?php echo $brand["nombre"] ?><br>
 								<?php
 								}

@@ -3,17 +3,14 @@
      <div class="container">
          <div class="text-center">
              <h2 class="section-heading text-uppercase">Home</h2>
-             <!--<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
          </div>
          <div class="row">
              <?php
-                //Decodifica el archivo json y lo convierte en un array 
-                $products = json_decode(file_get_contents("../data/loadProducts.json"), true);
-
+                require_once("business/productsBusiness.php");
                 $limit = 0;
 
                 // Agarro 10 productos y los muestro
-                foreach ($products["products"] as $rkey => $product) {
+                foreach (daoGetProducts() as $product) {
                     if ($product['isOutstanding'] == true && $limit < 10) { ?>
                      <div class="col-lg-4 col-sm-6 mb-4">
                          <div class="portfolio-item">

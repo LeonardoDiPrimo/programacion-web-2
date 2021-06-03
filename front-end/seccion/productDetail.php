@@ -1,22 +1,16 @@
 <?php
 
-require_once("DAO/comments.php");
+require_once("business/productsBusiness.php");
+require_once("business/commentsBusiness.php");
 
-$products = json_decode(file_get_contents("../data/loadProducts.json"), true);
-
-//Voy a buscar el producto por el id, si no lo encuentro redirecciono al home
-if (isset($_GET["productId"])) {
-    $productFilter = array_filter($products["products"], function ($product) {
-        return ($product['id'] == $_GET["productId"]);
-    });
-}
+if (isset($_GET["productId"])) $product = businessFindProductById($_GET["productId"]);
 
 if (isset($_POST["sendComment"])) {
-    saveComment($_POST);
+    businessCreateComment($_POST);
 }
 
-if (!empty($productFilter)) {
-    $product = $productFilter[$_GET["productId"]];
+//Si no existe el id del producto vuelvo al home
+if (!empty($product)) {
 ?>
     <div class="container">
         <div class="row justify-content-center">
@@ -64,7 +58,7 @@ if (!empty($productFilter)) {
                         </tr>
                         <?php
                         $limit = 0;
-                        $comments = getComments();
+                        $comments = businessGetComments();
                         krsort($comments);
 
                         foreach ($comments as $comment) {

@@ -37,4 +37,3 @@ $marcas_json = json_encode($marcas);
 $handler = fopen("../data/marcas.json", "w+");
 fwrite($handler, $marcas_json);
 fclose($handler);
-?>

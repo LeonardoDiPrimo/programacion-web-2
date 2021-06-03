@@ -1,8 +1,8 @@
 <?php
 
-function saveComment($data = array())
+function daoCreateComment($data = array())
 {
-    $comments = getComments();
+    $comments = daoGetComments();
     $comments[date('YmdHis')] = array(
         "productId" => $data["productId"],
         "email" => $data["email"],
@@ -16,7 +16,7 @@ function saveComment($data = array())
     fclose($handler);
 }
 
-function getComments()
+function daoGetComments()
 {
     if (file_exists("../data/comments.json"))
         $comments = json_decode(file_get_contents("../data/comments.json"), true);
@@ -25,21 +25,21 @@ function getComments()
     return $comments;
 }
 
-function getComment($commentId)
+function daoFindCommentById($commentId)
 {
-    $comments = getComments();
+    $comments = daoGetComments();
     return $comments[$commentId];
 }
 
-function modifyComment($data = array(), $commentId)
+function daoUpdateComment($commentId, $data = array())
 {
-    $comments = getComments();
+    $comments = daoGetComments();
     $comments[$commentId] = array(
         "productId" => $data["productId"],
         "email" => $data["email"],
         "description" => $data["description"],
         "qualification" => $data["qualification"],
-        "creationDate" => date('H:i:s d:m:Y')
+        "creationDate" => $data["creationDate"]
     );
 
     $handler = fopen("../data/comments.json", "w");
@@ -47,9 +47,9 @@ function modifyComment($data = array(), $commentId)
     fclose($handler);
 }
 
-function deleteComment($commentId)
+function daoDeleteComment($commentId)
 {
-    $comments = getComments();
+    $comments = daoGetComments();
     unset($comments[$commentId]);
     $handler = fopen("../data/comments.json", "w");
     fwrite($handler, json_encode($comments));

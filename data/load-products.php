@@ -1,7 +1,7 @@
 <?php
 
 //Genero un array en donde voy a guardar todos los productos
-$products_array = array("products" => array(
+$products_array = array(
     /* Inicializo el indice a mano asi no empieza con posicion 0 el array, como el primero ya es 1 los demas se incrementan normal */
     1 => array(
         "id" => 1,
@@ -135,7 +135,7 @@ $products_array = array("products" => array(
         "price" => 16000,
         "url" => "assets/img/portfolio/mouse-logitech.jpg"
     ),
-));
+);
 
 //Genera un archivo Json donde se guarda la info del array
 $products_json = json_encode($products_array);
