@@ -11,6 +11,6 @@ $users_array = array("users" => array(
 	)));
 
 $users_json = json_encode($users_array);
-$handler = fopen("../data/user.json", "w+");
+$handler = fopen("data/user.json", "w+");
 fwrite($handler, $users_json);
 fclose($handler);

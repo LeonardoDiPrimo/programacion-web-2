@@ -9,7 +9,7 @@
 <body>
     <?php
     // Genero el usuario admin
-    require_once("../data/user.php");
+    require_once("data/user.php");
     require_once("seccion/login.php");
     ?>
 </body>

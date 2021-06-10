@@ -11,7 +11,7 @@
 </head>
 
 <?php
-$array_users = json_decode(file_get_contents("../data/user.json"), true);
+$array_users = json_decode(file_get_contents("data/user.json"), true);
 ?>
 
 <body class="my-login-page">
