@@ -6,7 +6,7 @@
          </div>
          <div class="row">
              <?php
-                require_once("business/productsBusiness.php");
+                require_once(DIR_BASE."business/productsBusiness.php");
                 $limit = 0;
 
                 // Agarro 10 productos y los muestro

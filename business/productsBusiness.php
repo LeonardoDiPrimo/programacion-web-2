@@ -1,6 +1,6 @@
 <?php
 
-require_once(DIR_BASE.'DAO/productsDAO.php');
+require_once(DIR_BASE."DAO/productsDAO.php");
 
 //FUNCION OBTENER PRODUCTO
 function businessGetProducts()

@@ -1,6 +1,6 @@
 <?php
 
-require_once("DAO/commentsDAO.php");
+require_once(DIR_BASE."DAO/commentsDAO.php");
 
 function businessCreateComment($data = array())
 {

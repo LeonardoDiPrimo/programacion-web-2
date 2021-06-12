@@ -1,6 +1,6 @@
 <?php
 
-require_once("DAO/brandsDAO.php");
+require_once(DIR_BASE."DAO/brandsDAO.php");
 
 function businessGetBrands()
 {

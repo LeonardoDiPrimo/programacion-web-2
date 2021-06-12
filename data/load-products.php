@@ -139,6 +139,6 @@ $products_array = array(
 
 //Genera un archivo Json donde se guarda la info del array
 $products_json = json_encode($products_array);
-$handler = fopen("data/loadProducts.json", "w+");
+$handler = fopen(DIR_BASE."data/loadProducts.json", "w+");
 fwrite($handler, $products_json);
 fclose($handler);

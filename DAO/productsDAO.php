@@ -15,7 +15,8 @@ function daoGetProducts()
 function daoFindProductById($productId)
 {
     $products = daoGetProducts();
-    return $products[$productId];
+    if (!empty($products[$productId])) return $products[$productId];
+    else return null;
 }
 
 //FUNCION MODIFICAR PRODUCTO
@@ -28,7 +29,7 @@ function daoDeleteProducts($productId)
 {
     $products = daoGetProducts();
     unset($products[$productId]);
-    $fp = fopen(DIR_BASE.'data/loadProducts.json', 'w');
+    $fp = fopen(DIR_BASE."data/loadProducts.json", "w");
     fwrite($fp, json_encode($products));
     fclose($fp);
 }

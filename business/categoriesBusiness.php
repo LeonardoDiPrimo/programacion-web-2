@@ -1,6 +1,6 @@
 <?php
 
-require_once("DAO/categoriesDAO.php");
+require_once(DIR_BASE."DAO/categoriesDAO.php");
 
 function businessGetCategories()
 {

@@ -11,15 +11,15 @@ function daoCreateComment($data = array())
         "creationDate" => date('H:i:s d:m:Y')
     );
 
-    $handler = fopen("data/comments.json", "w");
+    $handler = fopen(DIR_BASE."data/comments.json", "w");
     fwrite($handler, json_encode($comments));
     fclose($handler);
 }
 
 function daoGetComments()
 {
-    if (file_exists("data/comments.json"))
-        $comments = json_decode(file_get_contents("data/comments.json"), true);
+    if (file_exists(DIR_BASE."data/comments.json"))
+        $comments = json_decode(file_get_contents(DIR_BASE."data/comments.json"), true);
     else $comments = array();
 
     return $comments;
@@ -42,7 +42,7 @@ function daoUpdateComment($commentId, $data = array())
         "creationDate" => $data["creationDate"]
     );
 
-    $handler = fopen("data/comments.json", "w");
+    $handler = fopen(DIR_BASE."data/comments.json", "w");
     fwrite($handler, json_encode($comments));
     fclose($handler);
 }
@@ -51,7 +51,7 @@ function daoDeleteComment($commentId)
 {
     $comments = daoGetComments();
     unset($comments[$commentId]);
-    $handler = fopen("data/comments.json", "w");
+    $handler = fopen(DIR_BASE."data/comments.json", "w");
     fwrite($handler, json_encode($comments));
     fclose($handler);
 }

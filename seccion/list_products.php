@@ -1,10 +1,8 @@
 <!-- Listado del hardware con precio y boton descripcion -->
-
 <?php
-
-require_once("business/productsBusiness.php");
-require_once("business/categoriesBusiness.php");
-require_once("business/brandsBusiness.php");
+require_once(DIR_BASE."business/productsBusiness.php");
+require_once(DIR_BASE."business/categoriesBusiness.php");
+require_once(DIR_BASE."business/brandsBusiness.php");
 
 $products = daoGetProducts();
 
@@ -43,7 +41,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 	else $filter_products = $products;
 
 	//Si tengo productos en ($filter_products) se lo seteo a $products que es el que popula los productos
-	!empty($filter_products) ? $products = $filter_products : $products = [];
+	!empty($filter_products) ? $products = $filter_products : $products = array();
 }
 ?>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -20,8 +20,9 @@
 
 <body id="page-top">
     <?php
-    // Barra de navegación
     include_once("config/config.php");
+    
+    // Barra de navegación
     require_once(DIR_BASE."include/header.php");
 
     //Cargamos todos los php necesarios para generar los Json y que la pagina funcione
@@ -33,29 +34,23 @@
     //  Navega entre las distintas secciones de la pagina
     if (!empty($_GET["seccion"])) {
         $form = $_GET["seccion"];
-        if ($form == "services") :
-            require("seccion/services.php");
-        elseif ($form == "home") :
+        if ($form == "home") :
             require("seccion/home.php");
         elseif ($form == "products") :
             require("seccion/list_products.php");
-        elseif ($form == "about") :
-            require("seccion/about.php");
-        elseif ($form == "team") :
-            require("seccion/team.php");
         elseif ($form == "contact") :
             require("seccion/contact.php");
         elseif ($form == "productDetail") :
             require("seccion/productDetail.php");
         else :
-            require("seccion/error.php");
+            require("seccion/home.php");
         endif;
     } else {
         require("seccion/home.php");
     }
 
     // Footer
-    require_once("include/footer.php");
+    require_once(DIR_BASE."include/footer.php");
     ?>
 
     <!-- Bootstrap core JS-->

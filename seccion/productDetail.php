@@ -1,7 +1,7 @@
 <?php
 
-require_once("business/productsBusiness.php");
-require_once("business/commentsBusiness.php");
+require_once(DIR_BASE."business/productsBusiness.php");
+require_once(DIR_BASE."business/commentsBusiness.php");
 
 if (isset($_GET["productId"])) $product = businessFindProductById($_GET["productId"]);
 
