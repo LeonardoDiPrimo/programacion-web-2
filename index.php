@@ -21,13 +21,14 @@
 <body id="page-top">
     <?php
     // Barra de navegación
-    require_once("include/header.php");
+    include_once("config/config.php");
+    require_once(DIR_BASE."include/header.php");
 
     //Cargamos todos los php necesarios para generar los Json y que la pagina funcione
-    require_once("data/load-products.php");
-    require_once("data/categorias.php");
-    require_once("data/marcas.php");
-    require_once("helpers/string.php");
+    require_once(DIR_BASE."data/load-products.php");
+    require_once(DIR_BASE."data/categorias.php");
+    require_once(DIR_BASE."data/marcas.php");
+    require_once(DIR_BASE."helpers/string.php");
 
     //  Navega entre las distintas secciones de la pagina
     if (!empty($_GET["seccion"])) {
