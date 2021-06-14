@@ -142,3 +142,4 @@ $products_json = json_encode($products_array);
 $handler = fopen(DIR_BASE."data/loadProducts.json", "w+");
 fwrite($handler, $products_json);
 fclose($handler);
+?>
