@@ -42,6 +42,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="categoriesList.php" class="nav-link">
+            <i class="nav-icon far fa-image"></i>
+            <p>
+              Categorias
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
