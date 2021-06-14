@@ -29,8 +29,7 @@ function businessObtenerCategorias(){
 }
 
 function businessObtenerCategoria($id){
-    return daoObtenerCategorias($id);
-
+    return daoObtenerCategoria($id);
 }
 
 ?>
