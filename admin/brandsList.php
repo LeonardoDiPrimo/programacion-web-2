@@ -64,7 +64,7 @@
                     
                       
                       <td>
-                      <a href="brandsForm.php?edit=<?php echo $brands['id_marcas'] ?>"><i class="fa fa-th"></i></a>
+                      <a href="brandsForm.php?edit=<?php echo $brands['id_marcas'] ?>"><i class="fa fa-edit"></i></a>
 
                       <a href="brandsList.php?del=<?php echo $brands['id_marcas'] ?>"><i class="fa fa-trash"></i></a>
                       </td>

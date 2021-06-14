@@ -69,7 +69,7 @@
                       <td>$ <?php echo $products['price'] ?></td>
                       
                       <td>
-                      <a href="productsForm.php?edit=<?php echo $products['id'] ?>"><i class="fa fa-th"></i></a>
+                      <a href="productsForm.php?edit=<?php echo $products['id'] ?>"><i class="fa fa-edit"></i></a>
 
                       <a href="productsList.php?del=<?php echo $products['id'] ?>"><i class="fa fa-trash"></i></a>
                       </td>
