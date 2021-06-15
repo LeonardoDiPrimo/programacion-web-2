@@ -50,6 +50,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="commentsList.php" class="nav-link">
+            <i class="nav-icon far fa-image"></i>
+            <p>
+              Comentarios
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
