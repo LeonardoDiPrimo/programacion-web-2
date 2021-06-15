@@ -4,6 +4,17 @@ require_once('include/sidebar.php');
 include_once(DIR_BASE . 'business/commentsBusiness.php');
 include_once(DIR_BASE . 'business/productsBusiness.php');
 
+$comments = array();
+
+if (isset($_POST["filterProduct"])) {
+    if (empty($_POST["selectOption"])) $comments = businessGetComments();
+    else {
+        foreach (businessGetComments() as $comment) {
+            if ($comment["productId"] == $_POST["selectOption"]) array_push($comments, $comment);
+        }
+    }
+} else $comments = businessGetComments();
+
 ?>
 <!-- Content Wrapper. Contains page content S-->
 <div class="content-wrapper">
@@ -37,10 +48,26 @@ include_once(DIR_BASE . 'business/productsBusiness.php');
                     </button>
                 </div>
             </div>
-            
+
             <div class="card-body">
                 <div class="row">
+                    <div class="col-5">
+                        <form method="POST">
+                            <label>Filtrar Producto</label>
+                            <select class="form-control select2" name="selectOption">
+                                <option value="" selected="selected"></option>
+                                <?php foreach (businessGetProducts() as $prod) { ?>
+                                    <option value="<?php echo $prod["id"] ?>"> <?php echo $prod["name"] ?></option>
+                                <?php }
+                                ?>
+                            </select>
+                            <br>
+                            <button type="submit" class="btn btn-primary" name="filterProduct"> Aplicar Filtros </button>
+                        </form>
+                    </div>
+
                     <div class="col-12">
+                        <br>
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -56,7 +83,9 @@ include_once(DIR_BASE . 'business/productsBusiness.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach (businessGetComments() as $comment) { ?>
+                                        <?php
+                                        krsort($comments);
+                                        foreach ($comments as $comment) { ?>
                                             <tr>
                                                 <td><?php echo  $comment['productId'] ?></td>
                                                 <td><?php echo  businessFindProductById($comment['productId'])['name'] ?></td>
