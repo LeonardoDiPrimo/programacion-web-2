@@ -10,13 +10,7 @@
     }else{
         businessGuardarCategoria($_POST);
     }
-    ?>
-
-    <!-- Fix redirect  -->
-    <meta http-equiv="refresh" content="0;url=categoriesList.php"> 
-
-    <!-- redirect('brandsList.php'); Error variable preguntar al profe Undefined function 'redirect'.intelephense(1010) -->
-    <?php
+    redirect('categoriesList.php');
 }
   $categorie = array('nombre' => '');
 

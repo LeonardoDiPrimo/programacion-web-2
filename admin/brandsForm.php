@@ -10,13 +10,7 @@
     }else{
         businessGuardarMarca($_POST);
     }
-    ?>
-
-    <!-- Fix redirect  -->
-    <meta http-equiv="refresh" content="0;url=brandsList.php"> 
-
-    <!-- redirect('brandsList.php'); Error variable preguntar al profe Undefined function 'redirect'.intelephense(1010) -->
-    <?php
+    redirect('brandsList.php');
 }
   $brand = array( 'nombre' => '');
 
