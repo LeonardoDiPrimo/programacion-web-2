@@ -51,7 +51,6 @@ function daoUpdateProduct($data = array(), $productId)
         "url" => ''
     );
     file_put_contents(DIR_BASE.'data/loadProducts.json', json_encode($products));
-    return $productId;
 }
 
 //FUNCION BORRAR PRODUCTOS

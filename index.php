@@ -1,3 +1,7 @@
+<!--Agregar los archivos modificados 
+git add .
+Crear el commit
+git commit -m "nombre de lo que hiciste"-->
 <!DOCTYPE html>
 <html lang="en">
 

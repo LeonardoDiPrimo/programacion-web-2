@@ -31,7 +31,6 @@ function businessUpdateProduct($data = array(), $productId)
         $data['url'] = $_FILES['imagen']['name'];
     }
     daoUpdateProduct($data, $productId);
-    var_dump($_FILES); die();
 }
 
 function businessDeleteProducts($productId)

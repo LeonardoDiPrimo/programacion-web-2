@@ -1,6 +1,6 @@
 <?php
   require_once('include/header.php');
-  //require_once('include/sidebar.php');
+  require_once('include/sidebar.php');
   include_once(DIR_BASE.'business/productsBusiness.php');
   include_once(DIR_BASE.'business/categoriesBusiness.php');
   include_once(DIR_BASE.'business/brandsBusiness.php');
@@ -84,7 +84,7 @@
                     <label for="exampleInputFile">File input</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="imagen[]" class="custom-file-input" id="exampleInputFile">
+                        <input type="file" name="imagen" class="custom-file-input" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
