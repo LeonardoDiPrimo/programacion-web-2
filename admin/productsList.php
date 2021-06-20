@@ -2,9 +2,15 @@
   require_once('include/header.php');
   require_once('include/sidebar.php');
   include_once(DIR_BASE.'business/productsBusiness.php');
+  include_once(DIR_BASE.'business/categoriesBusiness.php');
+  include_once(DIR_BASE.'business/brandsBusiness.php');
+
+  $categories = businessGetCategories();
+  $brands = businessGetBrands();
 
   if(isset($_GET['del'])){
     businessDeleteProducts($_GET['del']);
+    redirect('productsList.php');
   }
 ?>
 
@@ -33,7 +39,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Productos <a href="productsForm.php"><i class="fa fa-plus"></i></a></h3>
+          <h3 class="card-title">Productos<a href="productsForm.php"><i class="fa fa-plus"></i></a></h3>
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
@@ -64,10 +70,9 @@
                     <tr>
                       <td><?php echo $products['id'] ?></td>
                       <td><?php echo $products['name'] ?></td>
-                      <td><?php echo $products['categoryId'] ?></td>
-                      <td><?php echo $products['model'] ?></td>
+                      <td><?php echo $categories[$products['categoryId']]['nombre'] ?></td>
+                      <td><?php echo $brands[$products['brandId']] ['nombre']?></td>
                       <td>$ <?php echo $products['price'] ?></td>
-                      
                       <td>
                       <a href="productsForm.php?edit=<?php echo $products['id'] ?>"><i class="fa fa-edit"></i></a>
 
