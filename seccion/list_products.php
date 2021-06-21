@@ -102,7 +102,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 						foreach ($products as $product) {  ?>
 							<div class="col-md-3" style="float:left">
 								<div class="card mb-2">
-									<img class="card-img-top" src=<?php echo $product["url"] ?> alt="Card image cap">
+									<img class="card-img-top" src=<?php echo 'images/'.$product["id"].'/'.$product["url"] ?> alt="Card image cap">
 									<div class="card-body">
 										<h6 class="card-title"><?php echo $product["name"] ?></h6>
 										<p class="card-text text-info">$ <?php echo $product["price"] ?></p>

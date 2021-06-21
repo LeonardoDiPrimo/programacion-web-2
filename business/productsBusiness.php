@@ -7,7 +7,6 @@ function businessSaveProducts($data = array())
     if (!empty($_FILES['imagen'])) {
         $data['url'] = $_FILES['imagen']['name'];
     }
-    
     $productId = daoSaveProducts($data);
 
     if (!empty($_FILES['imagen'])) {
@@ -15,8 +14,10 @@ function businessSaveProducts($data = array())
             mkdir(DIR_BASE . 'images/' . $productId);
         }
         move_uploaded_file($_FILES['imagen']['tmp_name'], DIR_BASE . 'images/' . $productId . '/' . $_FILES['imagen']['name']);
-        if (file_exists(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"])) {
-            unlink(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"]);
+        if (!empty($data["old_imagen"])) {
+            if (file_exists(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"])) {
+                unlink(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"]);
+            }
         }
     }
 }
@@ -36,10 +37,8 @@ function businessFindProductById($productId)
 //FUNCION MODIFICAR PRODUCTO
 function businessUpdateProduct($data = array(), $productId)
 {
-    if (!empty($_FILES['imagen'])) {
-        $data['url'] = $_FILES['imagen']['name'];
-    }
-
+   if (!empty($_FILES['imagen'])) $data['url'] = $_FILES['imagen']['name'];
+    
     daoUpdateProduct($data, $productId);
 
     if (!empty($_FILES['imagen'])) {
@@ -47,8 +46,10 @@ function businessUpdateProduct($data = array(), $productId)
             mkdir(DIR_BASE . 'images/' . $productId);
         }
         move_uploaded_file($_FILES['imagen']['tmp_name'], DIR_BASE . 'images/' . $productId . '/' . $_FILES['imagen']['name']);
-        if (file_exists(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"])) {
-            unlink(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"]);
+        if (!empty($data["old_imagen"])) {
+            if (file_exists(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"])) {
+                unlink(DIR_BASE . 'images/' . $productId . '/' . $data["old_imagen"]);
+            }
         }
     }
 }

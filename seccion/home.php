@@ -11,7 +11,7 @@
 
                 // Agarro 10 productos y los muestro
                 foreach (daoGetProducts() as $product) {
-                    if ($product['isOutstanding'] == true && $limit < 10) { ?>
+                    if ($product['active'] == true && $limit < 10) { ?>
                      <div class="col-lg-4 col-sm-6 mb-4">
                          <div class="portfolio-item">
                              <a class="portfolio-link" data-toggle="modal">
@@ -19,7 +19,7 @@
                                      <div class="portfolio-hover-content"></div>
                                  </div>
                                  <a href="index.php?seccion=productDetail&productId=<?php echo $product["id"] ?>">
-                                     <div class="home-gallery"><img class="img-fluid" src=<?php echo $product["url"] ?> alt="" /></div>
+                                     <div class="home-gallery"><img class="img-fluid" src=<?php echo 'images/'.$product["id"].'/'.$product["url"] ?> alt="" /></div>
                                  </a>
                              </a>
                              <div class="portfolio-caption">

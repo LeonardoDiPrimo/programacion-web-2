@@ -28,11 +28,7 @@ git commit -m "nombre de lo que hiciste"-->
     
     // Barra de navegación
     require_once(DIR_BASE."include/header.php");
-
-    //Cargamos todos los php necesarios para generar los Json y que la pagina funcione
-    require_once(DIR_BASE."data/load-products.php");
-    require_once(DIR_BASE."data/categorias.php");
-    require_once(DIR_BASE."data/marcas.php");
+    
     require_once(DIR_BASE."helpers/string.php");
 
     //  Navega entre las distintas secciones de la pagina

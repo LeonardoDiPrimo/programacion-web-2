@@ -74,7 +74,7 @@ if (isset($_POST["filterProduct"])) {
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>Product ID</th>
+                                            <th>ID del Producto</th>
                                             <th>Nombre del Producto</th>
                                             <th>Email</th>
                                             <th>Descripción</th>

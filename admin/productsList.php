@@ -60,23 +60,25 @@
                     <tr>
                       <th>ID</th>
                       <th>Nombre</th>
+                      <th>Categoria</th>
                       <th>Marca</th>
-                      <th>Modelo</th>
                       <th>Precio</th>
+                      <th>Activa</th>
                     </tr>
                   </thead>
                   <tbody>
-                      <?php foreach(businessGetProducts() as $products){ ?>
+                      <?php foreach(businessGetProducts() as $product){ ?>
                     <tr>
-                      <td><?php echo $products['id'] ?></td>
-                      <td><?php echo $products['name'] ?></td>
-                      <td><?php echo $categories[$products['categoryId']]['nombre'] ?></td>
-                      <td><?php echo $brands[$products['brandId']] ['nombre']?></td>
-                      <td>$ <?php echo $products['price'] ?></td>
+                      <td><?php echo $product['id'] ?></td>
+                      <td><?php echo $product['name'] ?></td>
+                      <td><?php echo $categories[$product['categoryId']]['nombre'] ?></td>
+                      <td><?php echo $brands[$product['brandId']] ['nombre']?></td>
+                      <td>$ <?php echo $product['price'] ?></td>
+                      <td><?php echo $product['active'] ? "SI" : "NO" ?></td>
                       <td>
-                      <a href="productsForm.php?edit=<?php echo $products['id'] ?>"><i class="fa fa-edit"></i></a>
+                      <a href="productsForm.php?edit=<?php echo $product['id'] ?>"><i class="fa fa-edit"></i></a>
 
-                      <a href="productsList.php?del=<?php echo $products['id'] ?>"><i class="fa fa-trash"></i></a>
+                      <a href="productsList.php?del=<?php echo $product['id'] ?>"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                     <?php } ?>

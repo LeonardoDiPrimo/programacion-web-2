@@ -2,6 +2,11 @@
 
 require_once(DIR_BASE."business/productsBusiness.php");
 require_once(DIR_BASE."business/commentsBusiness.php");
+include_once(DIR_BASE.'business/categoriesBusiness.php');
+include_once(DIR_BASE.'business/brandsBusiness.php');
+
+$categories = businessGetCategories();
+$brands = businessGetBrands();
 
 if (isset($_GET["productId"])) $product = businessFindProductById($_GET["productId"]);
 
@@ -18,11 +23,11 @@ if (!empty($product)) {
                 <div class="modal-body">
                     <h2 class="text-uppercase"><?php echo $product["name"] ?></h2>
                     <p class="item-intro text-muted"><?php echo $product["description"] ?></p>
-                    <img class="img-fluid d-block mx-auto" src="<?php echo $product["url"] ?>" alt="" />
+                    <img class="img-fluid d-block mx-auto" src="<?php echo 'images/'.$product["id"].'/'.$product["url"] ?>" alt="" />
                     <ul class="list-inline">
                         <br>
-                        <li>Marca: <?php echo strtoupper($marcas[$product["brandId"]]["nombre"]) ?></li>
-                        <li>Modelo: <?php echo strtoupper($product["model"]) ?></li>
+                        <li>Categoria: <?php echo strtoupper($categories[$product['categoryId']]['nombre']) ?></li>
+                        <li>Marca: <?php echo strtoupper($brands[$product['brandId']] ['nombre']) ?></li>
                     </ul>
                     <form name="commentForm" method="POST">
                         <div class="row align-items-stretch mb-5">

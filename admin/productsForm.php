@@ -14,7 +14,7 @@
     redirect('productsList.php');
   }
 
-  $products = array('name' => '', 'description' => '', 'brandId' => '', 'categoryId' => '', 'price' =>'' , 'url' =>'');
+  $products = array('name' => '', 'description' => '', 'brandId' => '', 'categoryId' => '', 'price' =>'' , 'url' => '', 'active' => '');
   if(!empty($_GET['edit'])){
     $products = businessFindProductById($_GET['edit']);
   }
@@ -76,8 +76,12 @@
                     <input type="text" class="form-control" id="exampleInputEmail1" name="price" value="<?php echo $products['price'] ?>">
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">Activo</label>
+                    <input type="checkbox" class="form-checkbox-label" id="active" name="active" value="" <?php echo ($products['active']) == TRUE ? 'checked' : ''?>>
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputEmail1">Descripción</label>
-                    <textarea class="form-control" name="description"><?php echo $products['description'] ?></textarea>
+                    <textarea class="form-control" name="description" rows="8" cols="40"><?php echo $products['description'] ?></textarea>
                   </div>
                   <div class="form-group">
                   <div class="form-group">
