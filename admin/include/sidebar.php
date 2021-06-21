@@ -58,14 +58,6 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="login.php" class="nav-link">
-            <i class="nav-icon far fa-image"></i>
-            <p>
-              Login
-            </p>
-          </a>
-        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
