@@ -12,7 +12,7 @@ function daoSaveProducts($data = array())
         "brandId" => $data['brandId'],
         "description" => $data['description'],
         "price" => $data['price'],
-        "url" => ''
+        "url" => $data['url']
     );
     file_put_contents(DIR_BASE.'data/loadProducts.json', json_encode($products));
     return $productId;
@@ -48,7 +48,7 @@ function daoUpdateProduct($data = array(), $productId)
         "brandId" => $data['brandId'],
         "description" => $data['description'],
         "price" => $data['price'],
-        "url" => ''
+        "url" => $data['url']
     );
     file_put_contents(DIR_BASE.'data/loadProducts.json', json_encode($products));
 }

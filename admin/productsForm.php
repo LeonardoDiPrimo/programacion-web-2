@@ -14,7 +14,7 @@
     redirect('productsList.php');
   }
 
-  $products = array('name' => '', 'description' => '', 'brandId' => '', 'categoryId' => '', 'price' =>'');
+  $products = array('name' => '', 'description' => '', 'brandId' => '', 'categoryId' => '', 'price' =>'' , 'url' =>'');
   if(!empty($_GET['edit'])){
     $products = businessFindProductById($_GET['edit']);
   }
@@ -85,6 +85,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" name="imagen" class="custom-file-input" id="exampleInputFile">
+                        <input type="hidden" name="old_imagen" value="<?php echo $products['url']?>" class="custom-file-input" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
@@ -99,10 +100,6 @@
           </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
       </div>
       <!-- /.card -->
 
