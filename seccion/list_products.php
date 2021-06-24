@@ -1,8 +1,8 @@
 <!-- Listado del hardware con precio y boton descripcion -->
 <?php
-require_once(DIR_BASE."business/productsBusiness.php");
-require_once(DIR_BASE."business/categoriesBusiness.php");
-require_once(DIR_BASE."business/brandsBusiness.php");
+require_once(DIR_BASE . "business/productsBusiness.php");
+require_once(DIR_BASE . "business/categoriesBusiness.php");
+require_once(DIR_BASE . "business/brandsBusiness.php");
 
 $products = daoGetProducts();
 
@@ -56,7 +56,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 <div class="container">
 	<div class="row">
 		<div class="col-md-3 ">
-			<form name="listProductsForm"  method="POST">
+			<form name="listProductsForm" method="POST">
 				<div id="accordion-side-bar">
 					<div class="card">
 						<div class="card-header bg-dark" id="header-categorias" data-toggle="collapse" type="button" data-target="#collapse-categorias" aria-controls="collapse-categorias">
