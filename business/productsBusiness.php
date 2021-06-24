@@ -1,6 +1,7 @@
 <?php
 
 require_once(DIR_BASE . "DAO/productsDAO.php");
+include_once(DIR_BASE . 'helpers/image.php');
 //FUNCION GUARDAR PRODUCTO
 function businessSaveProducts($data = array())
 {
@@ -43,7 +44,7 @@ function businessUpdateProduct($data = array(), $productId)
 
     // Utilizo el nombre porque si no se carga una imagen el $_FILES no esta vacio, es un array sin datos
     if (!empty($_FILES['imagen']['name'])) $data['url'] = $_FILES['imagen']['name'];
-    
+
     daoUpdateProduct($data, $productId);
 
     if (!empty($_FILES['imagen']['name'])) {
@@ -62,4 +63,6 @@ function businessUpdateProduct($data = array(), $productId)
 function businessDeleteProducts($productId)
 {
     daoDeleteProducts($productId);
+    $directory = DIR_BASE.'images/'.$productId.'/';
+    eliminar_archivos($directory);
 }
