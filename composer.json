@@ -1,0 +1,17 @@
+{
+    "name": "matias/programacion-web-2",
+    "autoload": {
+        "psr-4": {
+            "Matias\\ProgramacionWeb2\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "matiasrao",
+            "email": "71942345+matiasrao@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "swiftmailer/swiftmailer": "^6.2"
+    }
+}
