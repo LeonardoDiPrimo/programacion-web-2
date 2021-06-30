@@ -97,9 +97,11 @@ if (array_key_exists('applyFilters', $_POST)) {
 		<div class="col-md-9 my-3">
 			<div class="container mb-4  py-4">
 				<div class="row">
+				
 					<?php
 					if (!empty($products)) {
 						foreach ($products as $product) {  ?>
+
 							<div class="col-md-3" style="float:left">
 								<div class="card mb-2">
 									<img class="card-img-top" src=<?php echo 'images/'.$product["id"].'/'.$product["url"] ?> alt="Card image cap">
@@ -117,6 +119,7 @@ if (array_key_exists('applyFilters', $_POST)) {
 								</div>
 							</div>
 					<?php
+
 						}
 					} else echo "No hay productos que complan los filtros seleccionados";
 					?>
